@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <h1>Birdboard</h1>
+@extends('layouts.app')
 
-        <ul>
-            @forelse ($projects as $project)
-                <li>
-                    <a href="{{ $project->path() }}">{{ $project->title }}</a>
-                </li>
-            @empty
+@section('content')
+    <h1>Birdboard</h1>
+
+    <a href="/projects/create" class="btn btn-primary">Create New Project</a>
+
+    <ul>
+        @forelse ($projects as $project)
             <li>
-                No projects found
+                <a href="{{ $project->path() }}">{{ $project->title }}</a>
             </li>
-            @endforelse
-        </ul>
-    </body>
-</html>
+        @empty
+        <li>
+            No projects found
+        </li>
+        @endforelse
+    </ul>
+@endsection
